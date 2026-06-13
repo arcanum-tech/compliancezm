@@ -15,6 +15,14 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    // Auth guard
+    const sessionRaw = localStorage.getItem("compliancezm_session");
+    if (!sessionRaw) { router.replace("/login?redirect=/register"); return; }
+    try {
+      const { user } = JSON.parse(sessionRaw);
+      setForm(prev => ({ ...prev, owner_name: prev.owner_name || user.name || "", phone: prev.phone || user.phone || "" }));
+    } catch {}
+    // Restore draft
     try { const s = sessionStorage.getItem(CACHE_KEY); if (s) { const d = JSON.parse(s); if (d) setForm(prev => ({ ...prev, ...d })); } } catch {}
   }, []);
   useEffect(() => {

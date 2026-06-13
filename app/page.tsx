@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeaderAuth from "./HeaderAuth";
 
 const COMPLIANCE_ITEMS = [
   { icon: "🧾", title: "ZRA Tax Returns", desc: "VAT, PAYE, income tax filing deadlines" },
@@ -21,9 +22,7 @@ export default function Home() {
               <p className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>Business Compliance Made Easy 🇿🇲</p>
             </div>
           </div>
-          <Link href="/login" className="text-xs font-bold px-4 py-2 rounded-full" style={{ background: "rgba(255,255,255,0.2)" }}>
-            My Dashboard →
-          </Link>
+          <HeaderAuth />
         </div>
       </header>
 
